@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("events")
-public class EventsController {
+public class EventsRestController {
 
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
