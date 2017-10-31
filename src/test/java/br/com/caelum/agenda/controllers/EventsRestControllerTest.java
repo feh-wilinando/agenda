@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-public class EventsControllerTest {
+public class EventsRestControllerTest {
 
     @Autowired
     private MockMvc mvc;
@@ -46,7 +46,7 @@ public class EventsControllerTest {
                 "Serão quatro dias de muita interação e conhecimento para todos os colegas da TI CAIXA, em que a inovação e o foco no cliente estarão no centro das atenções!";
 
 
-        mvc.perform(get("/events").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/api/events").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].title", is("I Simpósio Inova CEDES/SP")))
                 .andExpect(jsonPath("$[0].date", is(formatter.format(dateOfEvent))))
