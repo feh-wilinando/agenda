@@ -4,11 +4,11 @@ import br.com.caelum.agenda.models.Event;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.Repository;
 
-public interface EventDao extends CrudRepository<Event, Long> {
+public interface EventDao extends Repository<Event, Long> {
 
-
-    @Override
     List<Event> findAll();
+
+    void save(Event e);
 }
