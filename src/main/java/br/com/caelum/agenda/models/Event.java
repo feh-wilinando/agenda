@@ -2,25 +2,40 @@ package br.com.caelum.agenda.models;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
+import org.hibernate.validator.constraints.NotEmpty;
 
+
+@Entity
 public class Event {
 
-
+    @Id
+    @GeneratedValue
+    private Long id;
+    @NotEmpty
     private String title;
+    @NotEmpty
     private String description;
+    @NotNull
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime date;
+    @NotNull
     private String address;
     private String poster;
 
 
-    private Event(){}
+    private Event() {
+    }
 
     public Event(String title, String description, LocalDateTime date, String address, String poster) {
         this.title = title;
