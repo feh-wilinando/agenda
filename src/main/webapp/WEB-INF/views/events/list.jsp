@@ -11,17 +11,20 @@
             <thead>
             <tr>
                 <th class="text-center">Nome</th>
+                <th class="text-center">Descrição </th>
                 <th class="text-center">Endereço</th>
+                <th class="text-center">Data</th>
+
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${events}" var="event">
 
                 <tr>
-                    <td class="text-center">${event.title }
-                    </td>
-                    <td class="text-center">${event.address }
-                    </td>
+                    <td class="text-center">${event.title} </td>
+                    <td class="text-center">${event.description} </td>
+                    <td class="text-center">${event.address} </td>
+                    <td class="text-center">${event.date} </td>
 
                 </tr>
             </c:forEach>
