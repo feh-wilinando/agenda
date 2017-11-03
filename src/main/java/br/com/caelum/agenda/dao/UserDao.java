@@ -7,4 +7,6 @@ import org.springframework.data.repository.Repository;
 public interface UserDao extends Repository<User, Long> {
 
     User save(User user);
+
+    User findUserByEmail(String email);
 }
