@@ -3,6 +3,8 @@ package br.com.caelum.agenda.controller;
 import br.com.caelum.agenda.dao.UserDao;
 import br.com.caelum.agenda.models.User;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +23,9 @@ public class UserRestController {
     @PostMapping("/signup")
     public ResponseEntity signUp(@RequestBody User user) {
 
-        User userFound = userDao.findUserByEmail(user.getEmail());
+        Optional<User> userFound = userDao.findUserByEmail(user.getEmail());
 
-        if (userFound == null) {
+        if (!userFound.isPresent()) {
             User userSaved = userDao.save(user);
             return ResponseEntity.status(HttpStatus.CREATED).body(userSaved);
         }
@@ -34,12 +36,12 @@ public class UserRestController {
 
     @PostMapping("/signin")
     public ResponseEntity signIn(@RequestBody User user) {
-        User userFound = userDao.findUserByEmail(user.getEmail());
+        Optional<User> userFound = userDao.findUserByEmail(user.getEmail());
 
-        if (userFound == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado na base");
+        if (userFound.isPresent())
+            return ResponseEntity.ok(userFound);
 
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado na base");
 
-        return ResponseEntity.ok(userFound);
     }
 }
