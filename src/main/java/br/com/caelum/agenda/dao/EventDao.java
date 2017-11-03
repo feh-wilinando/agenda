@@ -1,4 +1,4 @@
-package br.com.caelum.agenda;
+package br.com.caelum.agenda.dao;
 
 import br.com.caelum.agenda.models.Event;
 

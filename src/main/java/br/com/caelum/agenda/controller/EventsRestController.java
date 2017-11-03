@@ -1,6 +1,6 @@
 package br.com.caelum.agenda.controller;
 
-import br.com.caelum.agenda.EventDao;
+import br.com.caelum.agenda.dao.EventDao;
 import br.com.caelum.agenda.models.Event;
 
 import java.util.List;
