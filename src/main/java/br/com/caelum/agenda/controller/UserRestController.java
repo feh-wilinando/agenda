@@ -30,7 +30,7 @@ public class UserRestController {
             return ResponseEntity.status(HttpStatus.CREATED).body(userSaved);
         }
 
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Usuário não pode ser criado na base");
+        return ResponseEntity.status(HttpStatus.GONE).body("Usuário não pode ser criado na base");
     }
 
 
@@ -39,7 +39,7 @@ public class UserRestController {
         Optional<User> userFound = userDao.findUserByEmail(user.getEmail());
 
         if (userFound.isPresent())
-            return ResponseEntity.ok(userFound);
+            return ResponseEntity.ok(userFound.get());
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado na base");
 
